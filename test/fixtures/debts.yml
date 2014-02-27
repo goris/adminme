@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  due_date: 2014-02-26
+  quantity: 9.99
+  term: MyString
+  payed: false
+
+two:
+  due_date: 2014-02-26
+  quantity: 9.99
+  term: MyString
+  payed: false
