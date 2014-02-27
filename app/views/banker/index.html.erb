@@ -1,0 +1,15 @@
+<% if notice %>
+		<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1> Your Debts Catalog </h1>
+
+<% @debts.each do |debt| %>
+  <div class="entry">
+	<h3>Debt from: <%= debt.due_date %></h3>
+   	<div class="quantity_line">
+	  <span class="quantity"><%= number_to_currency(debt.quantity) %></span>
+	  <p> <%= debt.term %> </p>
+	</div>
+  </div>
+<% end %>
