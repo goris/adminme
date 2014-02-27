@@ -1,33 +1,26 @@
 <h1>Listing debts</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Due date</th>
-      <th>Quantity</th>
-      <th>Term</th>
-      <th>Payed</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <% @debts.each do |debt| %>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+	  <td class="list_description">
+	    <dl>
+		  <dt><%= debt.quantity %></dt>
+		  <dt><%= debt.term %></dt>
+		  <dt><%= debt.due_date %></dt>
+        </dl>
+      </td>
 
-  <tbody>
-    <% @debts.each do |debt| %>
-      <tr>
-        <td><%= debt.due_date %></td>
-        <td><%= debt.quantity %></td>
-        <td><%= debt.term %></td>
-        <td><%= debt.payed %></td>
-        <td><%= link_to 'Show', debt %></td>
-        <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
-        <td><%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  <td class"list_actions">
+				<%= link_to 'Show', debt %> <br />
+          <%= link_to 'Edit', edit_debt_path(debt) %> <br />
+		  <%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Confirma la acción?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<br />
 
-<%= link_to 'New Debt', new_debt_path %>
+<%= link_to 'Nueva Deuda', new_debt_path %>
