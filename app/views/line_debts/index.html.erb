@@ -1,0 +1,29 @@
+<h1>Listing line_debts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Debt</th>
+      <th>Cart</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @line_debts.each do |line_debt| %>
+      <tr>
+        <td><%= line_debt.debt %></td>
+        <td><%= line_debt.cart %></td>
+        <td><%= link_to 'Show', line_debt %></td>
+        <td><%= link_to 'Edit', edit_line_debt_path(line_debt) %></td>
+        <td><%= link_to 'Destroy', line_debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Line debt', new_line_debt_path %>

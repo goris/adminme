@@ -1,0 +1,25 @@
+<%= form_for(@line_debt) do |f| %>
+  <% if @line_debt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@line_debt.errors.count, "error") %> prohibited this line_debt from being saved:</h2>
+
+      <ul>
+      <% @line_debt.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :debt_id %><br>
+    <%= f.text_field :debt_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cart_id %><br>
+    <%= f.text_field :cart_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

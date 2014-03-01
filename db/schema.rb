@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227033219) do
+ActiveRecord::Schema.define(version: 20140301030827) do
+
+  create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "debts", force: true do |t|
     t.date     "due_date"
@@ -21,5 +26,15 @@ ActiveRecord::Schema.define(version: 20140227033219) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "line_debts", force: true do |t|
+    t.integer  "debt_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "line_debts", ["cart_id"], name: "index_line_debts_on_cart_id"
+  add_index "line_debts", ["debt_id"], name: "index_line_debts_on_debt_id"
 
 end

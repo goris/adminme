@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Debt:</strong>
+  <%= @line_debt.debt %>
+</p>
+
+<p>
+  <strong>Cart:</strong>
+  <%= @line_debt.cart %>
+</p>
+
+<%= link_to 'Edit', edit_line_debt_path(@line_debt) %> |
+<%= link_to 'Back', line_debts_path %>

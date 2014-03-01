@@ -1,4 +1,8 @@
 Adminme::Application.routes.draw do
+  resources :line_debts
+
+  resources :carts
+
   get "banker/index"
   resources :debts
 

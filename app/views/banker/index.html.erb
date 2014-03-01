@@ -4,12 +4,16 @@
 
 <h1> Your Debts Catalog </h1>
 
-<% @debts.each do |debt| %>
-  <div class="entry">
-	<h3>Debt from: <%= debt.due_date %></h3>
-   	<div class="quantity_line">
-	  <span class="quantity"><%= number_to_currency(debt.quantity) %></span>
-	  <p> <%= debt.term %> </p>
-	</div>
-  </div>
+<% cache ['bank', Debt.latest] do %>
+  <% @debts.each do |debt| %>
+    <% cache ['entry', debt] do %>
+      <div class="entry">
+        <h3>Debt from: <%= debt.due_date %></h3>
+        <div class="quantity_line">
+	      <span class="quantity"><%= number_to_currency(debt.quantity) %></span>
+		  <p> <%= debt.term %> <%= button_to 'Pay', line_debts_path(debt_id: debt) %></p>
+	    </div>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
