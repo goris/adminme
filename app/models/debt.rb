@@ -4,7 +4,7 @@ class Debt < ActiveRecord::Base
 
   before_destroy :ensure_not_referenced_by_any_line_debt
 		
-  validates :date, :quantity, :term, presence: true
+  validates :due_date, :quantity, :term, presence: true
 
   validates :quantity, numericality: { greater_than_or_equal_to: 0.0 }
 
