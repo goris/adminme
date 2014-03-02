@@ -27,11 +27,11 @@ class LineDebtsController < ApplicationController
   # POST /line_debts.json
   def create
     debt = Debt.find(params[:debt_id])
-    @line_debt = @cart.line_debts.build(debt: debt)
+    @line_debt = @cart.add_debt(debt.id)
 
     respond_to do |format|
       if @line_debt.save
-        format.html { redirect_to @line_debt.cart, notice: 'Line debt was successfully created.' }
+        format.html { redirect_to @line_debt.cart}
         format.json { render action: 'show', status: :created, location: @line_debt }
       else
         format.html { render action: 'new' }
@@ -72,6 +72,6 @@ class LineDebtsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_debt_params
-      params.require(:line_debt).permit(:debt_id, :cart_id)
+      params.require(:line_debt).permit(:debt_id)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140301030827) do
+ActiveRecord::Schema.define(version: 20140302003433) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140301030827) do
     t.integer  "cart_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "quantity",   default: 1
   end
 
   add_index "line_debts", ["cart_id"], name: "index_line_debts_on_cart_id"
